@@ -19,8 +19,6 @@ pipeline {
         }
     }
 	
-	username variable $USERNAMEpassword variable $PASSWORDSnowflake Account address=hashmap.snowflakecomputing.comDriver name Driver=SnowflakeDatabase name=test_dband the warehouse warehouse=test_wh
-	
 	stage('Deploy changes') {
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
