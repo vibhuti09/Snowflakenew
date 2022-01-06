@@ -18,8 +18,8 @@ pipeline {
             ''' 
         }
     }
-username variable $USERNAMEpassword variable $PASSWORDSnowflake Account address=hashmap.snowflakecomputing.comDriver name Driver=SnowflakeDatabase name=fliprand the warehouse warehouse=COMPUTE_WH
-stage('Deploy changes') {
+	
+	stage('Deploy changes') {
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh '''
@@ -28,7 +28,7 @@ stage('Deploy changes') {
         }
       }
     }
-stage('Verify changes') {
+	stage('Verify changes') {
       steps {
         withCredentials(bindings: [usernamePassword(credentialsId: 'snowflake_creds', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
           sh '''
@@ -36,8 +36,12 @@ stage('Verify changes') {
               ''' 
         }
       }
-post {
+	  }
+	  }
+	  post {
     always {
       sh 'chmod -R 777 .'
     }
-  }	  
+  }
+ }
+ 
