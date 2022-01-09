@@ -5,10 +5,10 @@ pipeline {
   agent {
     docker {
       image 'hashmapinc/sqitch:jenkins'
-      args "--entrypoint=''"
+      args "-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
     }
   }
-  stages {
+  stages { 
     stage('Moving .snowsql to workspace and replacing snowsql in /bin') {
         steps {
             sh '''
