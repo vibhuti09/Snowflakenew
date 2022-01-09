@@ -5,7 +5,7 @@ pipeline {
   agent {
     docker {
       image 'hashmapinc/sqitch:jenkins'
-      args "-u root -v /var/run/docker.sock:/var/run/docker.sock -v /usr/local/bin/docker:/usr/bin/docker --entrypoint=''"
+      args "-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
     }
   }
   stages { 
